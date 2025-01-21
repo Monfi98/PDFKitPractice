@@ -17,6 +17,20 @@ struct NotablePDF: Identifiable {
   var pages: [page]?
 }
 
+struct NotablePDFMetadata: Identifiable {
+  let id: UUID
+  let title: String
+  let createdAt: Date
+  var modifiedAt: Date
+  
+  init(from pdf: NotablePDF) {
+    self.id = pdf.id
+    self.title = pdf.title
+    self.createdAt = pdf.createdAt
+    self.modifiedAt = pdf.modifiedAt
+  }
+}
+
 struct page: Identifiable {
   let id: UUID = UUID()
   let index: Int
